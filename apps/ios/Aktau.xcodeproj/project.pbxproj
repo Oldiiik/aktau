@@ -1,0 +1,222 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+		30E8F16A202875048528D7A8 /* AktauClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AktauClient.swift; sourceTree = "<group>"; };
+		7B6B1AB7C3B6C1FCD64C1F17 /* LiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivity.swift; sourceTree = "<group>"; };
+		E16B9F09189061934E344ABF /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		1BEBEE2F4E1B216B0BEE3EB5 /* WidgetCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetCard.swift; sourceTree = "<group>"; };
+		DF3157D35989AB9D6FF9ACE7 /* WidgetState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetState.swift; sourceTree = "<group>"; };
+		BFB9462283FFBB82D716EA24 /* AktauApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AktauApp.swift; sourceTree = "<group>"; };
+		24E639766AD5C30CA90066E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		85EB1C3A84BBD73A8CDFFDB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C45C07D92AF55EBA414CBB76 /* AktauApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AktauApp.entitlements; sourceTree = "<group>"; };
+		E3930087FD7F842BD1C6C560 /* AktauWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AktauWidget.swift; sourceTree = "<group>"; };
+		2E215F56CA560E38356D31A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B785CA1292BED96FB92F04D8 /* AktauWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AktauWidget.entitlements; sourceTree = "<group>"; };
+		04C0EBB74EF4B7B49E29775C /* Aktau.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aktau.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED9630C4845D3DB7148B5C74 /* AktauWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = wrapper.app-extension; includeInIndex = 0; path = AktauWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		29F92DB2FD50CBE048CB351C /* AktauClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E8F16A202875048528D7A8 /* AktauClient.swift */; };
+		B0DA1E4AF25D6E9F2FFE5A3A /* LiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6B1AB7C3B6C1FCD64C1F17 /* LiveActivity.swift */; };
+		E62FF25640C8D44E688EE455 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16B9F09189061934E344ABF /* Theme.swift */; };
+		6A2FCAB3170893C6D1CFFA8B /* WidgetCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEBEE2F4E1B216B0BEE3EB5 /* WidgetCard.swift */; };
+		7369E4032083C56A43112E93 /* WidgetState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3157D35989AB9D6FF9ACE7 /* WidgetState.swift */; };
+		F22BF87045F2FCDC70908595 /* AktauApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB9462283FFBB82D716EA24 /* AktauApp.swift */; };
+		3237EAC5C1719A14BA912EE6 /* AktauClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E8F16A202875048528D7A8 /* AktauClient.swift */; };
+		D35E56C648437E9A71D8A649 /* LiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6B1AB7C3B6C1FCD64C1F17 /* LiveActivity.swift */; };
+		CF09BCD558D0C8E0A941AB5C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16B9F09189061934E344ABF /* Theme.swift */; };
+		3DA412C4A68791BD463C92B1 /* WidgetCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEBEE2F4E1B216B0BEE3EB5 /* WidgetCard.swift */; };
+		C2A85F6CE407C3F7599AA45A /* WidgetState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3157D35989AB9D6FF9ACE7 /* WidgetState.swift */; };
+		8F6974365727011614163EF9 /* AktauWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3930087FD7F842BD1C6C560 /* AktauWidget.swift */; };
+		3233E246D73329A610FB4F74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24E639766AD5C30CA90066E1 /* Assets.xcassets */; };
+		9F637D29206415DD366FC9AA /* AktauWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = ED9630C4845D3DB7148B5C74 /* AktauWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9D10A42589C8F5479091BEBD /* Shared */ = {isa = PBXGroup; children = (
+				30E8F16A202875048528D7A8 /* AktauClient.swift */,
+				7B6B1AB7C3B6C1FCD64C1F17 /* LiveActivity.swift */,
+				E16B9F09189061934E344ABF /* Theme.swift */,
+				1BEBEE2F4E1B216B0BEE3EB5 /* WidgetCard.swift */,
+				DF3157D35989AB9D6FF9ACE7 /* WidgetState.swift */,
+			); path = Shared; sourceTree = "<group>"; };
+		BC27A7A41AFC3B89C89841B4 /* AktauApp */ = {isa = PBXGroup; children = (
+				BFB9462283FFBB82D716EA24 /* AktauApp.swift */,
+				24E639766AD5C30CA90066E1 /* Assets.xcassets */,
+				85EB1C3A84BBD73A8CDFFDB1 /* Info.plist */,
+				C45C07D92AF55EBA414CBB76 /* AktauApp.entitlements */,
+			); path = AktauApp; sourceTree = "<group>"; };
+		81D337529D0864897948B207 /* AktauWidget */ = {isa = PBXGroup; children = (
+				E3930087FD7F842BD1C6C560 /* AktauWidget.swift */,
+				2E215F56CA560E38356D31A8 /* Info.plist */,
+				B785CA1292BED96FB92F04D8 /* AktauWidget.entitlements */,
+			); path = AktauWidget; sourceTree = "<group>"; };
+		1D5F545FBA1B7116946BB4C6 /* Products */ = {isa = PBXGroup; children = (
+				04C0EBB74EF4B7B49E29775C /* Aktau.app */,
+				ED9630C4845D3DB7148B5C74 /* AktauWidgetExtension.appex */,
+			); name = Products; sourceTree = "<group>"; };
+		4EAE695AD1F489F78EA3E1C6 = {isa = PBXGroup; children = (
+				9D10A42589C8F5479091BEBD /* Shared */,
+				BC27A7A41AFC3B89C89841B4 /* AktauApp */,
+				81D337529D0864897948B207 /* AktauWidget */,
+				1D5F545FBA1B7116946BB4C6 /* Products */,
+			); sourceTree = "<group>"; };
+		F1F6B7C2E5BBC6E6E19DFCA0 /* PBXContainerItemProxy */ = {isa = PBXContainerItemProxy; containerPortal = 46F86FAA6BBF9AC94A7E4595 /* Project object */; proxyType = 1; remoteGlobalIDString = CF909885D0DDF065A2EE7B8A; remoteInfo = AktauWidgetExtension; };
+		8605C88B17D1B48A241C8484 /* PBXTargetDependency */ = {isa = PBXTargetDependency; target = CF909885D0DDF065A2EE7B8A /* AktauWidgetExtension */; targetProxy = F1F6B7C2E5BBC6E6E19DFCA0 /* PBXContainerItemProxy */; };
+		F9F1FFC2A7B30AEE5E39D518 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (
+				29F92DB2FD50CBE048CB351C,
+				B0DA1E4AF25D6E9F2FFE5A3A,
+				E62FF25640C8D44E688EE455,
+				6A2FCAB3170893C6D1CFFA8B,
+				7369E4032083C56A43112E93,
+				F22BF87045F2FCDC70908595,
+			); runOnlyForDeploymentPostprocessing = 0; };
+		342378E80BF6571DE21690EA /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (
+			); runOnlyForDeploymentPostprocessing = 0; };
+		FA0AD7FFD5EBFADDB2B1CBFC /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (
+				3233E246D73329A610FB4F74,
+			); runOnlyForDeploymentPostprocessing = 0; };
+		10939473F8FE6944E8EBDF87 /* Embed Foundation Extensions */ = {isa = PBXCopyFilesBuildPhase; buildActionMask = 2147483647; dstPath = ""; dstSubfolderSpec = 13; files = (
+				9F637D29206415DD366FC9AA /* AktauWidgetExtension.appex in Embed Foundation Extensions */,
+			); name = "Embed Foundation Extensions"; runOnlyForDeploymentPostprocessing = 0; };
+		239ECFB90DB22FE024F5E71B /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "AktauApp/AktauApp.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = "AktauApp/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kz.aktau.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			}; name = Debug; };
+		12CFB2FDB8F46F1547900EF4 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "AktauApp/AktauApp.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = "AktauApp/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kz.aktau.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			}; name = Release; };
+		E07263319C79CFBE9BB1FE4A /* Build configuration list for PBXNativeTarget "Aktau" */ = {isa = XCConfigurationList; buildConfigurations = (
+				239ECFB90DB22FE024F5E71B /* Debug */,
+				12CFB2FDB8F46F1547900EF4 /* Release */,
+			); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		2C4EB695CB836FF70F6CFA90 /* Aktau */ = {isa = PBXNativeTarget; buildConfigurationList = E07263319C79CFBE9BB1FE4A; buildPhases = (
+				F9F1FFC2A7B30AEE5E39D518,
+				342378E80BF6571DE21690EA,
+				FA0AD7FFD5EBFADDB2B1CBFC,
+				10939473F8FE6944E8EBDF87,
+			); buildRules = (
+			); dependencies = (
+				8605C88B17D1B48A241C8484 /* PBXTargetDependency */,
+			); name = Aktau; productName = Aktau; productReference = 04C0EBB74EF4B7B49E29775C /* Aktau.app */; productType = "com.apple.product-type.application"; };
+		86A13C4E49A0D682C6F117F5 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (
+				3237EAC5C1719A14BA912EE6,
+				D35E56C648437E9A71D8A649,
+				CF09BCD558D0C8E0A941AB5C,
+				3DA412C4A68791BD463C92B1,
+				C2A85F6CE407C3F7599AA45A,
+				8F6974365727011614163EF9,
+			); runOnlyForDeploymentPostprocessing = 0; };
+		84143176F31AF4F9E6E9784B /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (
+			); runOnlyForDeploymentPostprocessing = 0; };
+		5DCD57FA5EE56A05FB05DC04 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (
+			); runOnlyForDeploymentPostprocessing = 0; };
+		1158F2A478CC3BEC6DD475B6 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = "AktauWidget/AktauWidget.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = "AktauWidget/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kz.aktau.app.widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			}; name = Debug; };
+		9DB479F104D5632869FBAD57 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = "AktauWidget/AktauWidget.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = "AktauWidget/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kz.aktau.app.widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			}; name = Release; };
+		8F150E67F076DA8685B61972 /* Build configuration list for PBXNativeTarget "AktauWidgetExtension" */ = {isa = XCConfigurationList; buildConfigurations = (
+				1158F2A478CC3BEC6DD475B6 /* Debug */,
+				9DB479F104D5632869FBAD57 /* Release */,
+			); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		CF909885D0DDF065A2EE7B8A /* AktauWidgetExtension */ = {isa = PBXNativeTarget; buildConfigurationList = 8F150E67F076DA8685B61972; buildPhases = (
+				86A13C4E49A0D682C6F117F5,
+				84143176F31AF4F9E6E9784B,
+				5DCD57FA5EE56A05FB05DC04,
+			); buildRules = (
+			); dependencies = (
+			); name = AktauWidgetExtension; productName = AktauWidgetExtension; productReference = ED9630C4845D3DB7148B5C74 /* AktauWidgetExtension.appex */; productType = "com.apple.product-type.app-extension"; };
+		D48F58F8CA231B2301441318 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = singlefile;
+			}; name = Debug; };
+		6AFE22E70BE079CBB63426F8 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			}; name = Release; };
+		A1806D8FE767B99D399E13F3 /* Build configuration list for PBXProject "Aktau" */ = {isa = XCConfigurationList; buildConfigurations = (
+				D48F58F8CA231B2301441318 /* Debug */,
+				6AFE22E70BE079CBB63426F8 /* Release */,
+			); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		46F86FAA6BBF9AC94A7E4595 /* Project object */ = {isa = PBXProject; attributes = {BuildIndependentTargetsInParallel = 1; LastSwiftUpdateCheck = 2600; LastUpgradeCheck = 2600; }; buildConfigurationList = A1806D8FE767B99D399E13F3; compatibilityVersion = "Xcode 14.0"; developmentRegion = en; hasScannedForEncodings = 0; knownRegions = (en, Base, ru, kk, ); mainGroup = 4EAE695AD1F489F78EA3E1C6; productRefGroup = 1D5F545FBA1B7116946BB4C6 /* Products */; projectDirPath = ""; projectRoot = ""; targets = (
+				2C4EB695CB836FF70F6CFA90 /* Aktau */,
+				CF909885D0DDF065A2EE7B8A /* AktauWidgetExtension */,
+			); };
+	};
+	rootObject = 46F86FAA6BBF9AC94A7E4595 /* Project object */;
+}

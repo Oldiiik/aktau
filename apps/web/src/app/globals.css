@@ -1,0 +1,388 @@
+@import "tailwindcss";
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/geist-mono";
+@import "@fontsource-variable/geologica/shrp.css";
+
+/* ── Aktau · design system v2 ─────────────────────────────────────────────
+   Design read: an everyday city companion for Aktau residents (ru / kk / en),
+   calm and trustworthy, with a Caspian-coast identity and real photography.
+   Dials: variance 5 · motion 4 · density 5.
+
+   Colour    one accent: the logo's Caspian blue (packages/ui tokens, the same
+             values as the iOS widget). Status colours are semantic only
+             (green ok · amber attention · red disruption). No glows on UI chrome;
+             the one gradient is the logo's own, used by the entrance only.
+             The AI layer is marked by a sparkle glyph + blue, not light.
+   Type      Geologica (display, numerals; its sharpness axis cuts the facade
+             numbers) · Geist (text) · Geist Mono (codes only). All cover Kazakh.
+   Shape     containers 20-24px · controls 14px · chips pill · inner 12px.
+   Motion    --ease-out for entering/exiting, --ease-in-out for on-screen moves.
+   Token names are kept from v1 (blue = accent, beam = AI marker) so every
+   surface re-skins at once. */
+:root {
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --surface-2: #f7f9fc;
+  --soft: #ebf4fe;
+  --text: #101828;
+  --secondary: #58677c;
+  --faint: #8a97a9;
+  --blue: #0868d9;
+  --blue-strong: #0553b0;
+  --on-blue: #ffffff;
+  --green: #14845d;
+  --green-soft: #eaf7f0;
+  --amber: #98610a;
+  --amber-soft: #fff5e5;
+  --red: #ca414d;
+  --red-soft: #fff0f1;
+  --border: #e3eaf2;
+  --line: rgb(16 24 40 / 0.08);
+  --black: #080e17;
+  --white: #ffffff;
+  --sea: #d2e6f8;
+  --demo: #6a55c2;
+  --demo-soft: #eeebfa;
+  --beam: #0868d9;
+  --beam-soft: #ebf4fe;
+  --beam-a: #0868d9;
+  --beam-b: #0868d9;
+  /* The logo's disc gradient (design/logo-source.webp). */
+  --logo-a: #59defd;
+  --logo-b: #239dfd;
+  --logo-c: #005cfd;
+  --glass: rgb(255 255 255 / 0.78);
+  --shadow: 0 1px 2px rgb(16 32 64 / 0.05), 0 10px 28px -14px rgb(16 32 64 / 0.16);
+  --shadow-lg: 0 2px 6px rgb(16 32 64 / 0.06), 0 28px 64px -24px rgb(16 32 64 / 0.3);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  color-scheme: light;
+}
+
+/* Night on the Caspian */
+:root[data-theme='dark'], .dark-scope {
+  --bg: #0b1320;
+  --surface: #121d2e;
+  --surface-2: #162336;
+  --soft: #172a45;
+  --text: #f3f7fc;
+  --secondary: #a3b2c7;
+  --faint: #66768d;
+  --blue: #58a6ff;
+  --blue-strong: #8cc3ff;
+  --on-blue: #04152b;
+  --green: #56d7a3;
+  --green-soft: #12302a;
+  --amber: #f0b45a;
+  --amber-soft: #33270f;
+  --red: #ff7b86;
+  --red-soft: #3a1b22;
+  --border: #22344b;
+  --line: rgb(243 247 252 / 0.08);
+  --sea: #10263f;
+  --demo: #ab9cf0;
+  --demo-soft: #221e40;
+  --beam: #58a6ff;
+  --beam-soft: #172a45;
+  --beam-a: #58a6ff;
+  --beam-b: #58a6ff;
+  --glass: rgb(18 29 46 / 0.78);
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 10px 28px -14px rgb(0 0 0 / 0.55);
+  --shadow-lg: 0 30px 70px -24px rgb(0 0 0 / 0.7);
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #0b1320;
+    --surface: #121d2e;
+    --surface-2: #162336;
+    --soft: #172a45;
+    --text: #f3f7fc;
+    --secondary: #a3b2c7;
+    --faint: #66768d;
+    --blue: #58a6ff;
+    --blue-strong: #8cc3ff;
+    --on-blue: #04152b;
+    --green: #56d7a3;
+    --green-soft: #12302a;
+    --amber: #f0b45a;
+    --amber-soft: #33270f;
+    --red: #ff7b86;
+    --red-soft: #3a1b22;
+    --border: #22344b;
+    --line: rgb(243 247 252 / 0.08);
+    --sea: #10263f;
+    --demo: #ab9cf0;
+    --demo-soft: #221e40;
+    --beam: #58a6ff;
+    --beam-soft: #172a45;
+    --beam-a: #58a6ff;
+    --beam-b: #58a6ff;
+    --glass: rgb(18 29 46 / 0.78);
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 10px 28px -14px rgb(0 0 0 / 0.55);
+    --shadow-lg: 0 30px 70px -24px rgb(0 0 0 / 0.7);
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --font-sans: 'Geist Variable', 'Geist', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Geologica Variable', 'Geologica', 'Geist Variable', ui-sans-serif, sans-serif;
+  --font-mono: 'Geist Mono Variable', 'Geist Mono', ui-monospace, SFMono-Regular, monospace;
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-soft: var(--soft);
+  --color-text: var(--text);
+  --color-secondary: var(--secondary);
+  --color-faint: var(--faint);
+  --color-blue: var(--blue);
+  --color-blue-strong: var(--blue-strong);
+  --color-on-blue: var(--on-blue);
+  --color-green: var(--green);
+  --color-green-soft: var(--green-soft);
+  --color-amber: var(--amber);
+  --color-amber-soft: var(--amber-soft);
+  --color-red: var(--red);
+  --color-red-soft: var(--red-soft);
+  --color-border: var(--border);
+  --color-line: var(--line);
+  --color-ink: var(--black);
+  --color-sea: var(--sea);
+  --color-demo: var(--demo);
+  --color-demo-soft: var(--demo-soft);
+  --color-beam: var(--beam);
+  --color-beam-soft: var(--beam-soft);
+  --color-glass: var(--glass);
+  --radius-12: 12px;
+  --radius-16: 16px;
+  --radius-20: 20px;
+  --radius-24: 24px;
+  --radius-28: 28px;
+  --radius-40: 40px;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  -webkit-tap-highlight-color: transparent;
+}
+/* Phones: iOS zooms into any field under 16px on focus, so fields are 16px there. */
+@media (max-width: 767px) {
+  input, textarea, select { font-size: 16px !important; }
+}
+/* Horizontal rails keep their inner padding when they snap. */
+.rail { scroll-padding-inline: 20px; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-weight: 450;
+  font-feature-settings: 'ss01' 1;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior-y: none;
+}
+
+/* Type scale. Display sizes use Geologica with a little sharpness: civic,
+   Cyrillic-native, cut like the painted numbers on Aktau's panel blocks. */
+.t-display { font-family: var(--font-display); font-size: clamp(34px, 6vw, 56px); font-weight: 650; letter-spacing: -0.035em; line-height: 1.02; font-variation-settings: 'SHRP' 30; }
+.t-title { font-family: var(--font-display); font-size: 28px; font-weight: 650; letter-spacing: -0.03em; line-height: 1.12; font-variation-settings: 'SHRP' 30; }
+.t-hero { font-family: var(--font-display); font-size: 22px; font-weight: 600; letter-spacing: -0.025em; line-height: 1.2; font-variation-settings: 'SHRP' 20; }
+.t-headline { font-family: var(--font-display); font-size: 19px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.25; font-variation-settings: 'SHRP' 20; }
+.t-now { font-size: 20px; font-weight: 600; letter-spacing: -0.015em; line-height: 1.3; }
+.t-section { font-size: 17px; font-weight: 650; letter-spacing: -0.012em; line-height: 1.3; }
+.t-card { font-size: 16px; font-weight: 600; letter-spacing: -0.008em; line-height: 1.35; }
+.t-body { font-size: 14.5px; font-weight: 450; line-height: 1.55; }
+.t-row { font-size: 14px; font-weight: 580; line-height: 1.4; }
+.t-sub { font-size: 13px; font-weight: 450; line-height: 1.45; }
+.t-meta { font-size: 12.5px; font-weight: 450; line-height: 1.4; }
+.t-nav { font-size: 11px; font-weight: 600; line-height: 1.3; }
+/* Small labels: sentence case, same family. No mono caps. */
+.t-label { font-family: var(--font-sans); font-size: 12.5px; font-weight: 560; line-height: 1.3; letter-spacing: 0; text-transform: none; }
+.t-mono { font-family: var(--font-sans); font-variant-numeric: tabular-nums; }
+/* Codes that must read as codes (INC-1042, raw transcripts) opt into the mono face. */
+.t-code { font-family: var(--font-mono); font-feature-settings: 'zero' 1; }
+.t-num { font-family: var(--font-display); font-variant-numeric: tabular-nums; letter-spacing: -0.03em; font-variation-settings: 'SHRP' 40; }
+
+/* Icons: SVG assets used as masks so they take the current text color. */
+.icon {
+  display: inline-block;
+  flex: none;
+  background-color: currentColor;
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
+}
+
+/* ── Surfaces ─────────────────────────────────────────────────────────── */
+.glass {
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  backdrop-filter: blur(20px) saturate(1.5);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08);
+}
+@media (prefers-reduced-transparency: reduce) { .glass { background: var(--surface); -webkit-backdrop-filter: none; backdrop-filter: none; } }
+.hairline { box-shadow: inset 0 0 0 1px var(--line); }
+.card-shadow { box-shadow: var(--shadow), inset 0 0 0 1px var(--line); }
+
+/* ── The AI marker ────────────────────────────────────────────────────
+   v1 drew the copilot as a glowing lamp gradient. v2 keeps the class names but
+   renders them as the plain accent: a sparkle glyph and teal, nothing that glows. */
+.beam-text { color: var(--beam); }
+.beam-fill { background: var(--blue); color: var(--on-blue); }
+.beam-fill .text-\[\#1b1004\], .beam-fill.text-\[\#1b1004\] { color: var(--on-blue); }
+.beam-edge { box-shadow: inset 0 0 0 1.5px var(--blue); }
+.beam-glow { box-shadow: none; }
+
+/* Facade numbers: "14 / 21" as painted on Aktau's panel blocks. */
+.plaque {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 0.9;
+  font-variant-numeric: tabular-nums;
+  font-variation-settings: 'SHRP' 100;
+}
+
+/* v1 drew a concrete-seam grid behind the plaque; v2 retires decorative
+   lines. The class stays as a no-op so older markup keeps working. */
+.panel-seams { display: none; }
+
+/* Photo scrim: legible type over real photography. */
+.scrim-b { background: linear-gradient(180deg, rgb(8 18 22 / 0) 30%, rgb(8 18 22 / 0.72) 100%); }
+
+/* ── Motion ───────────────────────────────────────────────────────────── */
+.tap { transition: transform 140ms cubic-bezier(0.2, 0.8, 0.2, 1), background-color 160ms ease-out, opacity 160ms ease-out, box-shadow 160ms ease-out, color 160ms ease-out; }
+.tap:active { transform: scale(0.97); }
+@keyframes beacon-pulse {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, currentColor 50%, transparent); }
+  100% { box-shadow: 0 0 0 12px color-mix(in srgb, currentColor 0%, transparent); }
+}
+.beacon { width: 8px; height: 8px; border-radius: 999px; background: currentColor; }
+.beacon[data-pulse='true'] { animation: beacon-pulse 900ms ease-out 1; }
+.beacon[data-live='true'] { animation: beacon-pulse 2.4s ease-out infinite; }
+@keyframes sheet-in { from { transform: translateY(24px); opacity: 0; } to { transform: none; opacity: 1; } }
+.sheet-in { animation: sheet-in 360ms cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+.fade-in { animation: fade-in 260ms ease-out both; }
+@keyframes rise { from { transform: translateY(14px); opacity: 0; } to { transform: none; opacity: 1; } }
+.rise { animation: rise 560ms cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.rise-1 { animation-delay: 60ms; } .rise-2 { animation-delay: 120ms; } .rise-3 { animation-delay: 180ms; } .rise-4 { animation-delay: 240ms; } .rise-5 { animation-delay: 300ms; }
+@keyframes shimmer { from { background-position: -200% 0; } to { background-position: 200% 0; } }
+.shimmer {
+  background: linear-gradient(90deg, var(--soft) 0%, color-mix(in srgb, var(--soft) 40%, var(--surface)) 50%, var(--soft) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+@keyframes scan { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+.scanline { position: relative; overflow: hidden; }
+.scanline::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--beam-a) 28%, transparent), transparent);
+  animation: scan 1.6s ease-in-out infinite;
+}
+@keyframes ring { 0% { transform: scale(0.6); opacity: 0.9; } 100% { transform: scale(2.4); opacity: 0; } }
+.ring { animation: ring 2.4s cubic-bezier(0.2, 0.8, 0.2, 1) infinite; }
+@keyframes float-y { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+.float-y { animation: float-y 6s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tap:active { transform: none; }
+  .beacon[data-pulse='true'], .beacon[data-live='true'] { animation: none; }
+  .sheet-in, .rise { animation: fade-in 200ms ease-out both; }
+  .shimmer, .scanline::after, .ring, .float-y { animation: none; }
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+@layer base {
+  :focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+  input:focus-visible, textarea:focus-visible, select:focus-visible { outline: none; }
+  label:has(> input:focus-visible), label:has(> textarea:focus-visible) { box-shadow: 0 0 0 2px var(--blue); }
+  ::selection { background: color-mix(in srgb, var(--blue) 28%, transparent); }
+}
+
+/* MapLibre */
+.maplibregl-ctrl-attrib { font-size: 10px !important; font-family: var(--font-sans); background: var(--glass) !important; }
+.maplibregl-ctrl-attrib a { color: var(--secondary) !important; }
+.maplibregl-canvas { outline: none; }
+
+/* ── Entrance (/start) ───────────────────────────────────────────────────────
+   First launch only, so the delight budget lives here. Timeline:
+     0     sea slides in · tower rises out of it
+     0.9s  the lamp lights (halo)
+     1.0s  beams extend, then sweep forever like a turning lamp: both beams
+           foreshorten together and the halo flashes when they point at you
+     0.9s  the sheet arrives; 1.35s language rows stagger in
+   Steps: the lighthouse moves up and shrinks into a guiding header.
+   Finish: beams flare, light floods the screen, the app opens. */
+.start-sky {
+  background:
+    radial-gradient(120% 70% at 18% 0%, var(--logo-a) 0%, transparent 62%),
+    linear-gradient(165deg, var(--logo-b) 0%, var(--logo-c) 100%);
+}
+.start-hero { transform-origin: 50% 0; transform: translateY(0) scale(0.56); transition: transform 640ms var(--ease-in-out); }
+.start.is-splash .start-hero { transform: translateY(6dvh) scale(1); }
+.start.is-finishing .start-hero { transform: translateY(16dvh) scale(1.08); }
+
+.start-word { opacity: 0; transform: translateY(-6px); transition: opacity 240ms var(--ease-out), transform 240ms var(--ease-out); }
+.start.is-splash .start-word { opacity: 1; transform: none; animation: start-rise 560ms var(--ease-out) 1050ms both; }
+.start.is-splash .start-tag { animation: start-rise 560ms var(--ease-out) 1200ms both; }
+.start-final { opacity: 0; transform: translateY(10px); }
+.start.is-finishing .start-final { opacity: 1; transform: none; transition: opacity 400ms var(--ease-out) 250ms, transform 400ms var(--ease-out) 250ms; }
+
+.start-sheet-pos { transform: translateY(0); transition: transform 640ms var(--ease-in-out); }
+.start.is-splash .start-sheet-pos { transform: translateY(max(0px, calc(74dvh - 392px))); }
+.start.is-finishing .start-sheet-pos { transform: translateY(102%); }
+.start-sheet { animation: start-sheet-up 760ms var(--ease-out) 850ms both; }
+
+.start-step { animation: start-step-next 280ms var(--ease-out) both; }
+.start-step.from-back { animation-name: start-step-back; }
+.start-item { animation: start-rise 420ms var(--ease-out) both; }
+.start-progress { transform-origin: 0 50%; transition: transform 420ms var(--ease-out); }
+.start-plaque { display: inline-block; animation: start-plaque 160ms var(--ease-out) both; }
+.start-pin-ring { animation: start-ring 1.8s var(--ease-out) infinite; }
+
+.lh { overflow: hidden; }
+.lh-tower { transform-box: fill-box; animation: lh-rise 1000ms var(--ease-out) 120ms both; }
+.lh-wave { transform-box: fill-box; animation: lh-wave 900ms var(--ease-out) both; }
+.lh-halo { transform-box: fill-box; transform-origin: center; animation: lh-light 700ms var(--ease-out) 900ms both, lh-flash 4.8s cubic-bezier(0.37, 0, 0.63, 1) 1700ms infinite; }
+.lh-beam { transform-box: view-box; }
+.lh-beam-l { transform-origin: 528px 445px; }
+.lh-beam-r { transform-origin: 728px 445px; }
+.lh-beam { animation: lh-beam-in 700ms var(--ease-out) 1000ms both, lh-sweep 4.8s cubic-bezier(0.37, 0, 0.63, 1) 1700ms infinite; }
+.start.is-finishing .lh-beam { animation: lh-flare 700ms var(--ease-out) both; }
+.start-flash { opacity: 0; background: radial-gradient(circle at 50% 24%, #fff 0%, #fff 34%, rgb(255 255 255 / 0) 64%); transform-origin: 50% 24%; transform: scale(0.2); }
+.start.is-finishing .start-flash { animation: start-flash 900ms var(--ease-out) 550ms both; }
+
+@keyframes start-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes start-sheet-up { from { transform: translateY(100%); } to { transform: none; } }
+@keyframes start-step-next { from { opacity: 0; transform: translateX(28px); } to { opacity: 1; transform: none; } }
+@keyframes start-step-back { from { opacity: 0; transform: translateX(-28px); } to { opacity: 1; transform: none; } }
+@keyframes start-plaque { from { opacity: 0.6; transform: scale(0.96); } to { opacity: 1; transform: none; } }
+@keyframes start-ring { from { opacity: 0.55; transform: scale(1); } to { opacity: 0; transform: scale(1.6); } }
+@keyframes start-flash { from { opacity: 0; transform: scale(0.2); } to { opacity: 1; transform: scale(3); } }
+@keyframes lh-rise { from { opacity: 0; transform: translateY(28%); } to { opacity: 1; transform: none; } }
+@keyframes lh-wave { from { opacity: 0; transform: translateX(-7%); } to { opacity: 1; transform: none; } }
+@keyframes lh-light { from { opacity: 0; transform: scale(0.4); } to { opacity: 0.55; transform: scale(1); } }
+@keyframes lh-flash { 0%, 100% { opacity: 0.55; transform: scale(1); } 50% { opacity: 1; transform: scale(1.18); } }
+@keyframes lh-beam-in { from { opacity: 0; transform: scaleX(0.05); } to { opacity: 1; transform: scaleX(1); } }
+@keyframes lh-sweep { 0%, 100% { opacity: 1; transform: scaleX(1); } 50% { opacity: 0.4; transform: scaleX(0.3); } }
+@keyframes lh-flare { from { opacity: 1; transform: scaleX(1); } to { opacity: 1; transform: scaleX(1.6); } }
+
+@media (prefers-reduced-motion: reduce) {
+  /* Fewer, gentler: the lighthouse is simply there, steps cross-fade, the finish is a fade to white. */
+  .lh-tower, .lh-wave, .lh-beam, .start.is-finishing .lh-beam, .start-pin-ring, .start-plaque { animation: none; }
+  .lh-halo { animation: none; opacity: 0.55; }
+  .start-hero, .start-sheet-pos { transition: none; }
+  .start-sheet { animation: fade-in 200ms ease-out both; }
+  .start-step, .start-step.from-back, .start-item, .start.is-splash .start-word, .start.is-splash .start-tag { animation: fade-in 180ms ease-out both; }
+  .start-flash { transform: none; }
+  .start.is-finishing .start-flash { animation: fade-in 300ms ease-out both; }
+}
+
+/* Weather hero: the logo's sky by day, the Caspian at night. */
+.weather-day { background: radial-gradient(120% 90% at 15% 0%, var(--logo-a) 0%, transparent 60%), linear-gradient(160deg, var(--logo-b), var(--logo-c)); }
+.weather-night { background: radial-gradient(110% 80% at 80% 0%, #2a3f8f 0%, transparent 60%), linear-gradient(170deg, #111d44, #060b1d); }

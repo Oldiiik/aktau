@@ -1,0 +1,7 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "db", "runtimeExecutable": "npx", "runtimeArgs": ["tsx", "scripts/db-server.ts"], "port": 54329 },
+    { "name": "web", "runtimeExecutable": "npm", "runtimeArgs": ["run", "dev"], "port": 3000 }
+  ]
+}

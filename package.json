@@ -1,0 +1,41 @@
+{
+  "name": "aktau",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.8",
+    "@electric-sql/pglite-postgis": "^0.2.8",
+    "@electric-sql/pglite-socket": "^0.2.11",
+    "@types/node": "^26.6.2",
+    "postgres": "^3.4.9",
+    "tsx": "^4.23.15",
+    "typescript": "~5.9",
+    "vitest": "^5.0.1"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.128.0",
+    "cheerio": "^1.2.0",
+    "zod": "^4.6.5"
+  },
+  "scripts": {
+    "db": "tsx scripts/db-server.ts",
+    "db:reset": "tsx scripts/db-server.ts --reset",
+    "dev": "npm run dev -w @aktau/web",
+    "build": "npm run build -w @aktau/web",
+    "start": "npm run start -w @aktau/web",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p apps/web/tsconfig.json --noEmit",
+    "seed:build": "tsx scripts/build-seed.ts",
+    "ingest": "tsx scripts/ingest.ts",
+    "db:migrate": "tsx scripts/migrate.ts",
+    "account": "tsx scripts/account.ts"
+  }
+}

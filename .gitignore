@@ -1,0 +1,14 @@
+node_modules/
+.next/
+.data/
+.env
+.env.local
+*.log
+.DS_Store
+coverage/
+apps/ios/build/
+apps/ios/DerivedData/
+*.xcuserstate
+xcuserdata/
+graphify-out/
+*.tsbuildinfo

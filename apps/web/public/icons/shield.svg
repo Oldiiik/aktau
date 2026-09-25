@@ -1,0 +1,11 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Icon/shield" clip-path="url(#clip0_0_31)">
+<path id="Vector" d="M7 1.16667L12.25 3.5V7C12.25 9.91667 7 12.8333 7 12.8333C7 12.8333 1.75 9.91667 1.75 7V3.5L7 1.16667Z" stroke="#65758B" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M4.66667 7L6.41667 8.75L9.33333 5.25" stroke="#65758B" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_0_31">
+<rect width="14" height="14" fill="white"/>
+</clipPath>
+</defs>
+</svg>
