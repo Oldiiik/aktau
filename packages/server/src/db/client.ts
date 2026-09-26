@@ -13,10 +13,23 @@ const g = globalThis as typeof globalThis & { __aktauSql?: Sql }
  */
 export function getSql(): Sql {
   if (g.__aktauSql) return g.__aktauSql
-  const url = process.env.DATABASE_URL
+  const url = databaseUrl()
   if (!url) throw new Error('DATABASE_URL is not set (see .env.example)')
   g.__aktauSql = createSql(url)
   return g.__aktauSql
+}
+
+/**
+ * DATABASE_URL, else POSTGRES_URL: the pooler URL the Supabase integration adds
+ * to a Vercel project. Its `supa` marker is not a Postgres setting, and
+ * postgres.js would send it to the server as one.
+ */
+export function databaseUrl(): string | undefined {
+  const raw = process.env.DATABASE_URL || process.env.POSTGRES_URL
+  if (!raw) return undefined
+  const u = new URL(raw)
+  u.searchParams.delete('supa')
+  return u.toString()
 }
 
 export function createSql(url: string, opts: { max?: number } = {}): Sql {

@@ -324,10 +324,11 @@ Deep links: `aktau://event/{id}` ↔ `/event/{id}` (widget, notifications, map, 
 
 ## Deploy (Supabase + Vercel)
 
-1. Create a Supabase project. Apply schema + seed:
-   `DATABASE_URL=<session-pooler URL> npm run db:migrate` (or `supabase db push`, then run the seed files).
-2. Vercel → import the repo, root `apps/web`, env: `DATABASE_URL`, `SESSION_SECRET`, `ADMIN_TOKEN`,
-   `CRON_SECRET`, optional `ANTHROPIC_API_KEY`, `DGIS_API_KEY`, `DEMO_MODE`, `LOCAL_SCHEDULER=false`.
+1. Vercel → import the repo with root directory `apps/web` (`apps/web/vercel.json` installs from the
+   repo root, runs functions in `fra1` next to the database, and applies migrations + seed before each build).
+2. Connect a Supabase database to the project (Vercel → Storage). Its `POSTGRES_URL` is used when
+   `DATABASE_URL` is not set. Env: `SESSION_SECRET`, `CRON_SECRET`, optional `ADMIN_TOKEN`, `GEMINI_API_KEY`
+   or `ANTHROPIC_API_KEY`, `DGIS_API_KEY`, `DEMO_MODE`, `LOCAL_SCHEDULER=false`. Redeploy after connecting.
 3. In Supabase SQL: `select vault.create_secret('<https://your-app>', 'app_base_url');`
    `select vault.create_secret('<CRON_SECRET>', 'cron_secret');` then
    `select public.aktau_schedule_jobs();` to register the 8 schedules (the latest definition is in
