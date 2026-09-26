@@ -95,8 +95,16 @@ export const requireAdmin = (req: NextRequest) => requireRole(req, canAdmin)
 /** 109 Copilot: operators and admins. */
 export const requireOperator = (req: NextRequest) => requireRole(req, canUseCopilot)
 
-export function requireCron(req: NextRequest): boolean {
-  const secret = process.env.CRON_SECRET
+/**
+ * CRON_SECRET, else the `cron_secret` in Supabase Vault: the one Supabase Cron
+ * sends, generated inside the database so it never has to be copied anywhere.
+ */
+let vaultCronSecret: Promise<string | null> | undefined
+export async function requireCron(req: NextRequest): Promise<boolean> {
+  vaultCronSecret ??= sql()<{ s: string }[]>`select decrypted_secret s from vault.decrypted_secrets where name = 'cron_secret'`
+    .then((r) => r[0]?.s ?? null, () => null)
+    .then((v) => { if (!v) vaultCronSecret = undefined; return v })
+  const secret = process.env.CRON_SECRET || (await vaultCronSecret)
   return !!secret && req.headers.get('authorization') === `Bearer ${secret}`
 }
 

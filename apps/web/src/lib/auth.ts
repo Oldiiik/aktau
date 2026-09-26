@@ -1,6 +1,8 @@
 // Account sessions. The cookie holds signed claims { account id, role,
 // session_version, expiry } — HMAC-SHA256 with SESSION_SECRET (falls back to
-// ADMIN_TOKEN). Web Crypto only, so the proxy can check it without the DB.
+// ADMIN_TOKEN, then to the server-only key the Supabase integration adds on
+// Vercel; hmac() prefixes it, so it is never used as-is). Web Crypto only, so
+// the proxy can check it without the DB.
 // The proxy trusts the role claim just to route; route handlers and server
 // pages re-read the account (role, disabled, session_version) from the DB.
 export type Role = 'resident' | 'operator' | 'admin'
@@ -9,7 +11,7 @@ export type Claims = { a: string; r: Role; v: number; e: number }
 export const SESSION_COOKIE = 'aktau_session'
 export const SESSION_MAX_AGE = 60 * 60 * 24 * 30
 
-const secret = () => process.env.SESSION_SECRET || process.env.ADMIN_TOKEN || null
+const secret = () => process.env.SESSION_SECRET || process.env.ADMIN_TOKEN || process.env.SUPABASE_JWT_SECRET || process.env.SUPABASE_SERVICE_ROLE_KEY || null
 const enc = new TextEncoder()
 const b64 = (b: ArrayBuffer | Uint8Array) => Buffer.from(b instanceof Uint8Array ? b : new Uint8Array(b)).toString('base64url')
 
