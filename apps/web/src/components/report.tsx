@@ -220,7 +220,7 @@ export function ReportView({ home, mine: initialMine, initialText = '', session 
             <span className="flex min-w-0 flex-1 flex-col gap-0.5">
               <span className="t-card text-text">{incidentHeading(lang, likely)}</span>
               <span className="t-sub text-secondary">{placeText(lang, likely)} · {tx(STATUS[likely.status]?.label ?? STATUS.NEW!.label)}</span>
-              <span className="t-meta text-faint" suppressHydrationWarning>{tx({ en: 'Reported', ru: 'Сообщили', kk: 'Хабарланды' })} {ago(lang, likely.first_signal_at)}</span>
+              <span className="t-meta text-faint" suppressHydrationWarning>{tx({ en: 'Started', ru: 'Началось', kk: 'Басталды' })} {ago(lang, likely.first_signal_at)}</span>
             </span>
             <span className="flex flex-col items-end">
               <span className="t-num text-[32px] font-semibold leading-none text-text">{likely.signal_count + likely.confirm_count}</span>

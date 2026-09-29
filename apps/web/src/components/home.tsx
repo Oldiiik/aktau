@@ -308,7 +308,7 @@ function NearbyNow({ nearby, arrived, onChange }: { nearby: NearbyPayload; arriv
               <span className="t-sub text-secondary">{mode === 'verify' ? `${incidentHeading(lang, lead)} · ${where(lead)}` : where(lead)}</span>
               <span className="t-meta text-faint" suppressHydrationWarning>
                 {mode === 'verify' ? tx({ en: 'You experienced this problem.', ru: 'Вы сталкивались с этой проблемой.', kk: 'Сіз бұл мәселеге тап болдыңыз.' })
-                  : `${tx({ en: 'Reported', ru: 'Сообщили', kk: 'Хабарланды' })} ${ago(lang, lead.first_signal_at)} · ${residentsText(lang, lead.residents)}`}
+                  : `${tx({ en: 'Started', ru: 'Началось', kk: 'Басталды' })} ${ago(lang, lead.first_signal_at)} · ${residentsText(lang, lead.residents)}`}
               </span>
               {mode === 'critical' ? (
                 <span className={`t-meta font-bold ${lead.status === 'NEW' ? 'text-amber' : 'text-secondary'}`}>
