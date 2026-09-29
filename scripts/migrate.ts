@@ -41,5 +41,11 @@ if (admins.length) {
   console.log(`▸ admins: ${done.length} promoted`)
 }
 
+// A labelled demo incident in 6 microdistrict (scripts/demo-6mkr.ts), when asked for.
+if (process.env.AKTAU_DEMO_SEED === '6mkr') {
+  const { seedSixMkrDemo } = await import('./demo-6mkr.ts')
+  console.log(`▸ demo: ${await seedSixMkrDemo(sql)}`)
+}
+
 await sql.end()
 console.log('▸ done')
