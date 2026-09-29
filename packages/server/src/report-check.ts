@@ -60,12 +60,27 @@ const GEMINI_SCHEMA = {
 const claudeAvailable = () => Boolean(process.env.ANTHROPIC_API_KEY || process.env.ANTHROPIC_AUTH_TOKEN)
 export const reportAiAvailable = () => claudeAvailable() || geminiAvailable()
 
-/** The AI half of the check. null when no engine is configured or it failed / timed out. */
+/**
+ * The AI half of the check. null when no engine is configured or it failed / timed out.
+ * A resident is waiting on "Send", so the review gets a short deadline and then
+ * fails open, as when the AI is down (a busy free-tier model once held reports for 30 s).
+ */
 export async function aiReview(text: string, intake: Pick<Intake, 'service' | 'lang'>, photo: ReportPhotoInput | null): Promise<AiReview | null> {
+  const ms = photo ? 15_000 : 8_000
+  let timer: ReturnType<typeof setTimeout> | undefined
+  const deadline = new Promise<null>((resolve) => { timer = setTimeout(() => { log('warn', 'report_check.ai_deadline', { ms }); resolve(null) }, ms) })
+  try {
+    return await Promise.race([review(text, intake, photo, ms), deadline])
+  } finally {
+    clearTimeout(timer)
+  }
+}
+
+async function review(text: string, intake: Pick<Intake, 'service' | 'lang'>, photo: ReportPhotoInput | null, ms: number): Promise<AiReview | null> {
   const prompt = `Report (detected language: ${intake.lang}; the app's guess at the problem type: ${intake.service}):\n"""\n${text.slice(0, 2000)}\n"""\n${photo ? 'A photo is attached above.' : 'No photo attached.'}`
   try {
     if (claudeAvailable()) {
-      const client = new Anthropic({ timeout: 20_000, maxRetries: 1 })
+      const client = new Anthropic({ timeout: ms, maxRetries: 0 })
       const model = process.env.ANTHROPIC_MODEL || 'claude-opus-5'
       const r = await client.messages.parse({
         model, max_tokens: 4000, output_config: { effort: 'low', format: zodOutputFormat(Review) }, system: SYSTEM,
@@ -75,7 +90,7 @@ export async function aiReview(text: string, intake: Pick<Intake, 'service' | 'l
       return clean(r.parsed_output, `claude:${model}`, !!photo)
     }
     if (geminiAvailable()) {
-      const { data, model } = await geminiJSON<unknown>({ system: SYSTEM, text: prompt, images: photo ? [photo] : [], schema: GEMINI_SCHEMA })
+      const { data, model } = await geminiJSON<unknown>({ system: SYSTEM, text: prompt, images: photo ? [photo] : [], schema: GEMINI_SCHEMA, timeoutMs: ms })
       return clean(Review.parse(data), `gemini:${model}`, !!photo)
     }
   } catch (err) {
