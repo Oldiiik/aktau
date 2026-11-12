@@ -185,7 +185,7 @@ describe('civic loop', () => {
   })
 
   it('10. analytics come from real incidents', async () => {
-    const a = await incidentAnalytics(sql, { includeDemo: true })
+    const a = await incidentAnalytics(sql, { includeDemo: true, now: NOW })
     expect(a.verified).toBeGreaterThanOrEqual(1)
     expect(a.reopened).toBeGreaterThanOrEqual(1)
     expect(a.recurring).toBeGreaterThanOrEqual(1)

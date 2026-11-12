@@ -1295,8 +1295,8 @@ export async function myIncidents(sql: Sql, installationId: string) {
  * Operator analytics from real incident data (city incidents only; demo
  * sessions and the seeded scenario are excluded unless asked for).
  */
-export async function incidentAnalytics(sql: Sql, o: { days?: number; includeDemo?: boolean } = {}) {
-  const since = new Date(Date.now() - (o.days ?? 30) * 86400_000)
+export async function incidentAnalytics(sql: Sql, o: { days?: number; includeDemo?: boolean; now?: Date } = {}) {
+  const since = new Date((o.now ?? new Date()).getTime() - (o.days ?? 30) * 86400_000)
   const demo = o.includeDemo ? sql`` : sql`and is_demo = false`
   const [a] = await sql<{
     active: number; overdue: number; response_min: number | null; resolution_h: number | null; closed: number; verified: number; reopened: number; recurring: number
